@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_head %}
+Crear acolchados
+{% endblock title_head %}
+
+{% block h1_header %}
+Crear acolchados
+{% endblock h1_header %}
+
+{% block main %}
+<form action={% url "comienzo:crear_acolchados"%} method="POST">
+    {% csrf_token %}
+<table>
+    {{form}}
+</table>
+
+    <input type="submit" value="Enviar">
+
+</form>
+{% endblock main %}
