@@ -1,6 +1,7 @@
 from django import forms 
 
 class CrearFormulario(forms.Form):
+
     tamanio=forms.CharField(max_length=20)
     color=forms.CharField(max_length=20)
     composicion=forms.CharField(max_length=20)

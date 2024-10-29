@@ -1,7 +1,13 @@
 from django.db import models
 
 class Acolchados(models.Model):
-    tamanio=models.CharField(max_length=20)
+    TAMANIO_VALUES = [
+        ("twin", "Twin"),
+        ("queen", "Queen"),
+        ("king", "King")
+        ]
+    tamanio=models.CharField(max_length=10,choices=TAMANIO_VALUES,verbose_name="tamaño")
+    
     color=models.CharField(max_length=20)
     composicion=models.CharField(max_length=20)
     
