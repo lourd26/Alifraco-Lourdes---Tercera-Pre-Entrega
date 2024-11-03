@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_head %}
+Buscar acolchados
+{% endblock title_head %}
+
+{% block h1_header %}
+Buscar acolchados
+{% endblock h1_header %}
+
+{% block main %}
+<form action={% url "habitacion:buscar_acolchados" %}enctype="multipart/form-data">
+{{form}}
+<input type="submit">
+
+</form>
+<a href={% url "habitacion:crear_acolchados"%} class="btn btn-info">Crear nuevo acolchado</a>
+{% if acolchados %}
+<ul>
+    {% for acolchado in acolchados %}
+    <li>{{acolchado}}
+        ||<a href={% url "habitacion:ver_acolchados" acolchado.id %}>Información completa</a>
+        ||<a href={% url "habitacion:editar_acolchados" acolchado.id %}>Editar</a>
+        ||<a href={% url "habitacion:eliminar_acolchados" acolchado.id %}>Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No hay acolchados cargados en esta página</p>
+{% endif %}
+
+{% endblock main %}
+

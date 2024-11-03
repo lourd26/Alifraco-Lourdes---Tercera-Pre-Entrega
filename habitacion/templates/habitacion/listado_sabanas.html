@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_head %}
+Listado Sábanas
+{% endblock title_head %}
+
+{% block h1_header %}
+Listado sábanas
+{% endblock h1_header %}
+
+{% block main %}
+
+<a href={% url "habitacion:crear_sabana"%} class="btn btn-info">Crear nueva sábana</a>
+{% if sabanas %}
+<ul>
+    {% for sabana in sabanas %}
+    <li>{{sabana}}
+        |<a href={% url "habitacion:ver_sabana" sabana.id %}>Información completa</a>
+        ||<a href={% url "habitacion:editar_sabana" sabana.id %}>Editar</a>
+        ||<a href={% url "habitacion:eliminar_sabana" sabana.id %}>Eliminar</a> 
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No hay sabanas cargadas en esta página</p>
+{% endif %}
+
+{% endblock main %}
+

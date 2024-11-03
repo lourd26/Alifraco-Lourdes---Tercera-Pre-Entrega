@@ -29,15 +29,35 @@
             <div class="container px-5">
                 <a class="navbar-brand" href={% url "comienzo:inicio" %}>Inicio</a>
                 <a class="navbar-brand" href={% url "comienzo:template1" %}>Objetivo</a>
-                <a class="navbar-brand" href={% url "comienzo:buscar_acolchados" %}>Buscar acolchados</a>
-                <a class="navbar-brand" href={% url "comienzo:crear_acolchados" %}>Crear acolchados</a>
+                <a class="navbar-brand" href={% url "habitacion:buscar_acolchados" %}>Acolchados</a>
+                <a class="navbar-brand" href={% url "habitacion:listado_sabanas" %}>Sábanas</a>
+                <a class="navbar-brand" href={% url "habitacion:listado_frazadas" %}>Frazadas</a>
                 <a class="navbar-brand" href={% url "comienzo:acerca_de_mi" %}>Acerca de mí</a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#!">Sign Up</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">Log In</a></li>
+                        {% if request.user.is_authenticated %}
+                        <a class="navbar-brand" href={% url "usuarios:modificar_perfil" %}>
+                            {% comment %} {% if request.user.datosextra.avatar.url %} {% endcomment %}
+                            <img src={{request.user.datosextra.avatar.url}} alt="" height="30 px">
+                            {% comment %} {% else %}
+                            <img src="{% static '\assets\img\galaxia-en-el-espacio_3840x2160_xtrafondos.com.jpg' %}" height="30 px">
+                            {% endif %}  {% endcomment %}
+                            {{request.user.username}}</a>
+                        <form action={% url "usuarios:salir" %} method="post">
+
+                            {% csrf_token %}
+                            <input type="submit" class="btn btn-secondary"value="Cerrar sesión">
+
+                        </form>
+
+                        {% else %}
+                        <li class="nav-item"><a class="nav-link btn btn-primary" href={% url "usuarios:acceso" %}>Ingresar a la página</a></li>
+                        
+                        <li class="nav-item"><a class="nav-link btn btn-danger" href={% url "usuarios:registro" %}>Registarse</a></li>
+                        {% endif %}
+                        
                     </ul>
                 </div>
             </div>

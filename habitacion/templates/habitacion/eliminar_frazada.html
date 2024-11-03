@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_head %}
+Eliminar Frazadas
+{% endblock title_head %}
+
+{% block h1_header %}
+Eliminar Frazada {{frazada.tamanio}} {{frazada.color}}
+{% endblock h1_header %}
+
+{% block main %}
+<form action={% url "habitacion:eliminar_frazada" frazada.id%} method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+<p>Está seguro de eliminar esta frazada {{frazada}}?</p>
+    <input type="submit" value="Confirmar">
+
+</form>
+{% endblock main %}

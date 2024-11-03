@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_head %}
+Visualizar frazadas
+{% endblock title_head %}
+
+{% block h1_header %}
+Visualizar frazadas
+{% endblock h1_header %}
+
+{% block main %}
+
+<ul>
+
+
+    <li>
+        tamaño={{frazada.tamanio}}
+
+    </li>
+    <li>
+        color={{frazada.color}}
+    </li>
+    <li>
+        
+        estilo={{frazada.estilo}}
+    
+  
+    </li>
+    <li>
+
+        fecha={{frazada.fecha_fabricacion}}
+    </li>
+    <li>
+        {% if frazada.imagen_frazada %}
+        <img src="{{ frazada.imagen_frazada.url }}" alt="Imagen de frazada" style="max-width: 200px;">
+        {% else %}
+        <p>No hay una imagen disponible</p>
+        {% endif %}
+    </li>
+    
+</ul>
+
+<ul>
+    <table>
+        <a href={% url "habitacion:listado_frazadas" %}>Volver al listado</a>
+    </table>
+</ul>
+
+
+
+{% endblock main %}
+

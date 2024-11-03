@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_head %}
+Visualizar acolchados
+{% endblock title_head %}
+
+{% block h1_header %}
+Visualizar acolchados
+{% endblock h1_header %}
+
+{% block main %}
+
+<ul>
+    <li>
+        {{acolchado.tamanio}}
+
+    </li>
+    <li>
+        {{acolchado.color}}
+    </li>
+    <li>
+        {{acolchado.composicion}}
+    </li>
+    <li>
+        {{acolchado.fecha_fabricacion}}
+    </li>
+    <li>
+        {% if acolchado.imagen_acolchado %}
+        <img src="{{ acolchado.imagen_acolchado.url }}" alt="Imagen de acolchado" style="max-width: 200px;">
+        {% else %}
+        <p>No hay una imagen disponible</p>
+        {% endif %}
+
+    </li>
+        
+</ul>
+
+<ul>
+    <table>
+        <a href={% url "habitacion:buscar_acolchados" %}>Volver al listado</a>
+    </table>
+</ul>
+
+
+
+{% endblock main %}
+

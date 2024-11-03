@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_head %}
+Editar acolchados
+{% endblock title_head %}
+
+{% block h1_header %}
+Editar {{acolchado}}
+{% endblock h1_header %}
+
+{% block main %}
+<form action={% url "habitacion:editar_acolchados" acolchado.pk%} method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<table>
+    {{form}}
+    
+</table>
+
+    <input type="submit" value="Enviar">
+
+</form>
+{% endblock main %}

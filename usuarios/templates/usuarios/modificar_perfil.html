@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title_head %}
+Modificar el perfil
+{% endblock title_head %}
+
+{% block h1_header %}
+Modificar el perfil de {{request.user.username}}
+{% endblock h1_header %}
+
+{% block main %}
+
+
+<form action={% url "usuarios:modificar_perfil" %} method="post" enctype="multipart/form-data">  
+    {% csrf_token %}
+    <table>
+        {{form}}  
+
+    </table>
+    <input type="submit" value="Modificar">
+</form>
+
+<div class="navbar">
+    <a href={% url "usuarios:modificar_contrasenia" %} class="btn btn-danger">Modificar contraseña</a>
+
+</div>
+
+{% endblock main %}
+

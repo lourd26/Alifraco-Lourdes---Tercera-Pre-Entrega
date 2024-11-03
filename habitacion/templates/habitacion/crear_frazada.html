@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_head %}
+Crear frazadas
+{% endblock title_head %}
+
+{% block h1_header %}
+Crear frazadas
+{% endblock h1_header %}
+
+{% block main %}
+<form action={% url "habitacion:crear_frazada"%} method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+<table>
+    {{form}}
+    
+</table> 
+
+    <input type="submit" value="Crear">
+
+</form>
+{% endblock main %}

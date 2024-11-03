@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_head %}
+Listado Frazadas
+{% endblock title_head %}
+
+{% block h1_header %}
+Listado frazadas
+{% endblock h1_header %}
+
+{% block main %}
+
+<a href={% url "habitacion:crear_frazada"%} class="btn btn-info">Crear nueva frazada</a>
+{% if frazadas %}
+<ul>
+    {% for frazada in frazadas %}
+    <li>{{frazada}}
+        |<a href={% url "habitacion:ver_frazada" frazada.id %}>Información completa</a>
+        ||<a href={% url "habitacion:editar_frazada" frazada.id %}>Editar</a>
+        ||<a href={% url "habitacion:eliminar_frazada" frazada.id %}>Eliminar</a> 
+    </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No hay frazadas cargadas en esta página</p>
+{% endif %}
+
+{% endblock main %}
+

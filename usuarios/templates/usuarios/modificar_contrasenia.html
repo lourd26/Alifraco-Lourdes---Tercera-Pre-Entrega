@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title_head %}
+Modificar contraseña
+{% endblock title_head %}
+
+{% block h1_header %}
+Modificar contraseña de {{request.user.username}}
+{% endblock h1_header %}
+
+{% block main %}
+
+
+<form action={% url "usuarios:modificar_contrasenia" %} method="post">  
+    {% csrf_token %}
+    <table>
+        {{form}}  
+
+    </table>
+    <input type="submit" value="Modificar">
+</form>
+
+{% endblock main %}
+
+

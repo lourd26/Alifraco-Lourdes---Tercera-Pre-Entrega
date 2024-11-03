@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_head %}
+Visualizar sábanas
+{% endblock title_head %}
+
+{% block h1_header %}
+Visualizar sábanas
+{% endblock h1_header %}
+
+{% block main %}
+
+
+
+<ul>
+
+
+    <li>
+        tamaño={{sabana.tamanio}}
+
+    </li>
+    <li>
+        color={{sabana.color}}
+    </li>
+    <li>
+        
+        composicion={{sabana.composicion}}
+    
+    <li>
+        hilos={{sabana.hilos}}
+
+    </li>
+    <li>
+
+        fecha={{sabana.fecha_fabricacion}}
+    </li>
+    <li>
+        {% if sabana.imagen_sabana %}
+        <img src="{{ sabana.imagen_sabana.url }}" alt="Imagen de sabana" style="max-width: 200px;">
+        {% else %}
+        <p>No hay una imagen disponible</p>
+        {% endif %}
+    </li>
+    
+</ul>
+
+<ul>
+    <table>
+        <a href={% url "habitacion:listado_sabanas" %}>Volver al listado</a>
+    </table>
+</ul>
+
+
+
+{% endblock main %}
+

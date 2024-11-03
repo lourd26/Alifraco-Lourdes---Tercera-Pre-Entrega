@@ -1,4 +1,4 @@
 from django.contrib import admin
-from comienzo.models import Acolchados
+# from comienzo.models import Acolchados
 
-admin.site.register(Acolchados)
+# admin.site.register(Acolchados)
