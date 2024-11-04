@@ -9,7 +9,7 @@ Eliminar Sábana {{sabana.composicion}} {{sabana.color}}
 {% endblock h1_header %}
 
 {% block main %}
-<form action={% url "habitacion:eliminar_sabana" sabana.id%} method="POST" enctype="multipart/form-data">
+<form action={% url "habitacion:eliminar_sabana" sabana.id%} method="POST" >
     {% csrf_token %}
 
 <p>Está seguro de eliminar esta sábana {{sabana}}?</p>

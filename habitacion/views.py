@@ -7,7 +7,7 @@ from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.template import Template,Context,loader
 from django.shortcuts import render,redirect
-from habitacion.forms import CrearFormulario, BuscarFormulario,EditarFormulario
+from habitacion.forms import CrearFormulario, BuscarFormulario,EditarFormulario,BuscarFormularioFrazada
 from django.contrib.auth.decorators import login_required
 
 #ACOLCHADO
@@ -61,10 +61,15 @@ class CrearSabana(CreateView):
     success_url= reverse_lazy("habitacion:listado_sabanas")
     fields=["tamanio","color","composicion","hilos","fecha_fabricacion","imagen_sabana"]
     
-class ListadoSabanas(ListView):
-    model = Sabana
-    template_name = "habitacion/listado_sabanas.html"
-    context_object_name="sabanas"
+    
+def listado_sabanas(request):
+    formulario=BuscarFormulario(request.GET)
+    if formulario.is_valid():
+        color=formulario.cleaned_data.get("color")
+        composicion=formulario.cleaned_data.get("composicion")
+        sabanas=Sabana.objects.filter(color__icontains=color,composicion__icontains=composicion)
+    return render(request,"habitacion/listado_sabanas.html", {"sabanas":sabanas,"form":formulario})
+
 
 class VerSabana(DetailView):
     model = Sabana
@@ -83,18 +88,21 @@ class EliminarSabana(LoginRequiredMixin,DeleteView):
 
 #######################################################################################3
 
-#SABANA
-
+#FRAZADA
 class CrearFrazada(CreateView):
     model = Frazada
     template_name = "habitacion/crear_frazada.html"
     success_url= reverse_lazy("habitacion:listado_frazadas")
     fields=["tamanio","color","estilo","fecha_fabricacion","imagen_frazada"]
     
-class ListadoFrazadas(ListView):
-    model = Frazada
-    template_name = "habitacion/listado_frazadas.html"
-    context_object_name="frazadas"
+def listado_frazadas(request):
+    formulario=BuscarFormularioFrazada(request.GET)
+    frazadas=[]
+    if formulario.is_valid():
+        color=formulario.cleaned_data.get("color")
+        frazadas=Frazada.objects.filter(color__icontains=color)
+    return render(request,"habitacion/listado_frazadas.html", {"frazadas":frazadas,"form":formulario})
+
 
 class VerFrazada(DetailView):
     model = Frazada

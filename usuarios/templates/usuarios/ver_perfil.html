@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title_head %}
+Perfil completo 
+{% endblock title_head %}
+
+{% block h1_header %}
+Perfil completo de {{usuario.username}}
+{% endblock h1_header %}
+
+{% block main %}
+
+<ul>
+
+    <li>Nombre: {{ usuario.first_name }}</li>
+    <li>Apellido:{{ usuario.last_name }}</li>
+    <li>Email: {{ usuario.email }}</li>
+    <li>Nombre de usuario:{{ usuario.username }}</li>
+    
+    {% if datos_extra.fecha_de_nacimiento %}
+    
+    <li>Fecha de Nacimiento:{{ datos_extra.fecha_de_nacimiento }}</li>
+    {% else %}
+    <li>Fecha de Nacimiento: No hay una fecha cargada</li> 
+    {% endif %}
+    
+    
+        {% if datos_extra.avatar %}
+        <li>Avatar: <img src="{{datos_extra.avatar.url }}" alt="Avatar" height= "100px"></li>
+        {% else %}
+        <li>No hay avatar disponible</li>
+        
+        
+        {% endif %}
+        
+</ul>
+    
+<a href="{% url 'usuarios:modificar_perfil' %}" class="btn btn-info">Modificar perfil</a>
+<a href="{% url 'comienzo:inicio' %}" class="btn btn-success">Ir a inicio</a>
+<div class="navbar">
+    <a href={% url "usuarios:modificar_contrasenia" %} class="btn btn-danger">Modificar contraseña</a>
+
+</div>
+
+{% endblock main %}
+

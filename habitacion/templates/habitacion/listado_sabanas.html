@@ -9,7 +9,12 @@ Listado sábanas
 {% endblock h1_header %}
 
 {% block main %}
-
+<form action={% url "habitacion:listado_sabanas" %}>
+    {{form}}
+    <input type="submit">
+    
+</form>
+    
 <a href={% url "habitacion:crear_sabana"%} class="btn btn-info">Crear nueva sábana</a>
 {% if sabanas %}
 <ul>

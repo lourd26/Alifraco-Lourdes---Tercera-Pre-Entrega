@@ -16,6 +16,10 @@ class CrearFormulario(forms.Form):
 class BuscarFormulario(forms.Form):
     color=forms.CharField(max_length=20,required=False)
     composicion=forms.CharField(max_length=20,required=False)
+    
+class BuscarFormularioFrazada(forms.Form):
+        color=forms.CharField(max_length=20,required=False)
+
 
 
 class EditarFormulario(forms.Form):

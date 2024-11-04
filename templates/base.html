@@ -38,12 +38,10 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ms-auto">
                         {% if request.user.is_authenticated %}
-                        <a class="navbar-brand" href={% url "usuarios:modificar_perfil" %}>
-                            {% comment %} {% if request.user.datosextra.avatar.url %} {% endcomment %}
+                        <a class="navbar-brand" href={% url "usuarios:ver_perfil" %}>
+                            {% if request.user.datosextra.avatar %}
                             <img src={{request.user.datosextra.avatar.url}} alt="" height="30 px">
-                            {% comment %} {% else %}
-                            <img src="{% static '\assets\img\galaxia-en-el-espacio_3840x2160_xtrafondos.com.jpg' %}" height="30 px">
-                            {% endif %}  {% endcomment %}
+                            {% endif %}
                             {{request.user.username}}</a>
                         <form action={% url "usuarios:salir" %} method="post">
 
@@ -53,8 +51,9 @@
                         </form>
 
                         {% else %}
-                        <li class="nav-item"><a class="nav-link btn btn-primary" href={% url "usuarios:acceso" %}>Ingresar a la página</a></li>
                         
+                        <li class="nav-item"><a class="nav-link btn btn-primary" href={% url "usuarios:acceso" %}>Ingresar a la página</a></li>
+                        {% comment %} <li class="nav-item"><a class="nav-link btn btn-info" href={% url "usuarios:ver_perfil" %}>Ver Perfil</a></li> {% endcomment %}
                         <li class="nav-item"><a class="nav-link btn btn-danger" href={% url "usuarios:registro" %}>Registarse</a></li>
                         {% endif %}
                         

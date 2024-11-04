@@ -9,7 +9,7 @@ Eliminar Frazada {{frazada.tamanio}} {{frazada.color}}
 {% endblock h1_header %}
 
 {% block main %}
-<form action={% url "habitacion:eliminar_frazada" frazada.id%} method="POST" enctype="multipart/form-data">
+<form action={% url "habitacion:eliminar_frazada" frazada.id%} method="POST">
     {% csrf_token %}
 
 <p>Está seguro de eliminar esta frazada {{frazada}}?</p>

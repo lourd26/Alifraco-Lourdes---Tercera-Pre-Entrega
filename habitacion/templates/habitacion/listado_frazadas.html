@@ -10,6 +10,12 @@ Listado frazadas
 
 {% block main %}
 
+<form action={% url "habitacion:listado_frazadas" %}>
+    {{form}}
+    <input type="submit">
+    
+</form>
+
 <a href={% url "habitacion:crear_frazada"%} class="btn btn-info">Crear nueva frazada</a>
 {% if frazadas %}
 <ul>

@@ -3,8 +3,8 @@ from django.contrib.auth.forms import UserCreationForm,UserChangeForm,PasswordCh
 from django.contrib.auth.models import User
 
 class FormularioDeRegistro(UserCreationForm):
-    username=forms.CharField()
-    email=forms.EmailField()
+    username=forms.CharField(label="Nombre de Usuario")
+    email=forms.EmailField(label="Correo Electrónico")
     password1=forms.CharField(label="Contraseña",widget=forms.PasswordInput)
     password2=forms.CharField(label="Repetir contraseña",widget=forms.PasswordInput)
     first_name=forms.CharField(label="Nombre")
@@ -36,9 +36,32 @@ class FormularioModificarPerfil(UserChangeForm):
     first_name=forms.CharField(label="Nombre")
     last_name=forms.CharField(label="Apellido")
     password=None
-    avatar=forms.ImageField(required=False)
+    avatar=forms.ImageField(required=False,label="Avatar")
+    fecha_de_nacimiento=forms.DateField(
+        widget=forms.DateInput(attrs={"type":"date"}),
+        required=False, 
+        label="Fecha de Nacimiento")
     
     class Meta:
         model=User
-        fields=["email","first_name","last_name","avatar"]
+        fields=["email","first_name","last_name","fecha_de_nacimiento","avatar"]
         help_text={key:"" for key in fields}
+        
+# class FormularioVerPefil(forms.ModelForm):
+#     username=forms.CharField(label="Nombre de usuario")
+#     email=forms.EmailField(label= "Correo Electrónico")
+#     first_name=forms.CharField(label="Nombre")
+#     last_name=forms.CharField(label="Apellido")
+#     fecha_de_nacimiento=forms.DateField(
+#         widget=forms.DateInput(attrs={"type":"date"}),
+#         required=False, 
+#         label="Fecha de Nacimiento")
+#     avatar=forms.ImageField(required=False, label="Avatar")
+    
+#     class Meta:
+#         model=User
+#         fields=["username","email","first_name","last_name","fecha_de_nacimiento","avatar"]
+#         help_text={key:"" for key in fields}
+        
+    
+    
