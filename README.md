@@ -1,6 +1,6 @@
 #Proyecto de Lourdes Alifraco
 
-#Descripcióm
+#Descripción
 Este proyecto está diseñado para crear información acerca artículos de blanquería. En este caso elegí 3 productos:sábanas, frazadas y acolchados.
 
 #Funcionalidades
