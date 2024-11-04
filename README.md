@@ -11,6 +11,10 @@ Este proyecto está diseñado para crear información acerca artículos de blanq
 - Sección "Acerca de mí" que ofrece información personal.
 - Funciones de autenticación: login, logout, registro, vista y edición del perfil de usuario (incluyendo avatar, fecha de nacimiento y contraseña).
 
+#Aplicaciones
+-Comienzo: para la parte de inicio
+-Habitación: para los 3 productos
+-Usuarios: para login, logout, registro, perfil
 
 #Tecnologías usadas
 - Django
