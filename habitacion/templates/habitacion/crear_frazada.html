@@ -11,10 +11,9 @@ Crear frazadas
 {% block main %}
 <form action={% url "habitacion:crear_frazada"%} method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-<table>
-    {{form}}
-    
-</table> 
+    <table>
+        {{form}}
+    </table> 
 
     <input type="submit" value="Crear">
 
