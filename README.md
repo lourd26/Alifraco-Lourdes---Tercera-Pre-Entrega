@@ -30,4 +30,4 @@ Este proyecto está diseñado para crear información acerca artículos de blanq
 
 #Video
 
-https://www.youtube.com/watch?v=Lzp8TpggmRE
+https://youtu.be/lE5HiGqkGQc
